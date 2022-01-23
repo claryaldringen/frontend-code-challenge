@@ -1,0 +1,1 @@
+export { useFavoriteMutation } from './useFavoriteMutation'
