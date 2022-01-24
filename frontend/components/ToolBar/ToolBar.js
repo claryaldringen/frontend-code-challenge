@@ -10,7 +10,7 @@ import {
   Search,
   Switch,
 } from 'carbon-components-react'
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
 
 import { POKEMON_TYPES_QUERY } from '../../apollo/queries'
 import styles from './ToolBar.module.scss'
@@ -26,6 +26,7 @@ export const ToolBar = ({
   onFavoriteSwitcherChange,
 }) => {
   const { data } = useQuery(POKEMON_TYPES_QUERY)
+  const ref = useRef()
 
   const handleClick = (value) => () => {
     setIsListView(value)
@@ -38,13 +39,15 @@ export const ToolBar = ({
     [onTypeChange]
   )
 
-  let timeout
   const handleSearchChange = useCallback(
     (event) => {
-      clearTimeout(timeout)
-      timeout = setTimeout(() => onSearchChange(event.target.value), 500)
+      clearTimeout(ref.current.timeout)
+      ref.current.timeout = setTimeout(
+        () => onSearchChange(event.target.value),
+        500
+      )
     },
-    [onSearchChange, timeout]
+    [onSearchChange, ref]
   )
 
   const handleFavoriteSwitcherChange = useCallback(
@@ -74,6 +77,7 @@ export const ToolBar = ({
             onChange={handleSearchChange}
             light
             labelText=""
+            ref={ref}
           />
         </Column>
         <Column>

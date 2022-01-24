@@ -19,7 +19,7 @@ export const FavoriteButton = ({ id, isFavorite }) => {
     } catch (err) {
       dispatch({ type: CREATE_ERROR, error: err.message })
     }
-  }, [id, isFavorite, favoriteMutation, unfavoriteMutation])
+  }, [id, isFavorite, favoriteMutation, unfavoriteMutation, dispatch])
 
   return (
     <button className={styles.button} onClick={handleClick}>

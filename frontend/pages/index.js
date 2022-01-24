@@ -16,8 +16,8 @@ const Home = ({ initialData }) => {
   })
 
   const pokemons = useMemo(
-    () => (data ? data.pokemons.edges : []),
-    [initialData, data]
+    () => (data ? data.pokemons.edges : initialData),
+    [data, initialData]
   )
 
   const handleScroll = useCallback(() => {
@@ -79,6 +79,7 @@ export const getServerSideProps = async () => {
     query: POKEMONS_QUERY,
     variables: { offset: 0, limit: 12 },
   })
+
   return { props: { initialData: data.pokemons.edges } }
 }
 

@@ -20,7 +20,7 @@ export const Item = ({ id, image, name, types, isFavorite, isGrid }) => {
         <AspectRatio ratio="3x4" className={styles.card}>
           <Link href={`/${name}`} passHref>
             <a>
-              <Image src={image} width={360} height={336} />
+              <Image src={image} width={360} height={336} alt={name} />
             </a>
           </Link>
           <div>
@@ -38,7 +38,7 @@ export const Item = ({ id, image, name, types, isFavorite, isGrid }) => {
       <StructuredListCell className={styles.imageCell}>
         <Link href={`/${name}`} passHref>
           <a className={styles.link}>
-            <Image src={image} width={360} height={336} />
+            <Image src={image} width={360} height={336} alt={name} />
           </a>
         </Link>
       </StructuredListCell>

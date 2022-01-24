@@ -33,7 +33,7 @@ const Detail = (props) => {
     <Grid>
       <Row>
         <Column lg={6}>
-          <Image src={image} width={360} height={336} />
+          <Image src={image} width={360} height={336} alt={name} />
           <SoundButton sound={sound} />
         </Column>
         <Column lg={6}>
